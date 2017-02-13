@@ -22,7 +22,7 @@ class Profile:
 
     def __init__(self):
        self.profile = []
-       self.defaultField = 60750000
+       self.defaultField = 60747332
 
     def createFunc(self):
         self.functions = []
@@ -57,7 +57,7 @@ class Profile:
 
 class Recalc:
     def __init__(self):
-        self.A = [7.303, -2.326, -0.568, -0.193, 0.018, 0.041, -0.003]
+        self.A = [7.303, -2.326, -0.568, -0.193, -0.018, -0.041, -0.003]
         self.Profile = Profile()
         self.Profiles = []
         self.firstRec = 1
@@ -88,6 +88,46 @@ class Recalc:
                                     profile.getField(dist + 6*recalcH, i)) + \
                          self.A[6]*(profile.getField(dist - 8*recalcH, i) +
                                     profile.getField(dist + 8*recalcH, i))
+                print(str(self.A[0]*profile.profile[i].TField) + str(' ') +
+                      str(self.A[1]*((profile.profile[i].TField + profile.getField(dist - recalcH, i))/2 +
+                                     (profile.profile[i].TField + profile.getField(dist + recalcH, i))/2)) + str(' ') +
+                      str(self.A[2]*(profile.getField(dist - recalcH, i) +
+                                     profile.getField(dist + recalcH, i))) + str(' ') +
+                      str(self.A[3]*(profile.getField(dist - 2*recalcH, i) +
+                                    profile.getField(dist + 2*recalcH, i))) + str(' ') +
+                      str(self.A[4]*(profile.getField(dist - 3*recalcH, i) +
+                                    profile.getField(dist + 3*recalcH, i))) + str(' ') +
+                      str(self.A[5]*(profile.getField(dist - 6*recalcH, i) +
+                                    profile.getField(dist + 6*recalcH, i))) + str(' ') +
+                      str(self.A[6]*(profile.getField(dist - 8*recalcH, i) +
+                                    profile.getField(dist + 8*recalcH, i)))+ '\n')
+                print(str(profile.profile[i].TField) + str(' ') +
+                      str(((profile.profile[i].TField + profile.getField(dist - recalcH, i)) / 2 +
+                                       (profile.profile[i].TField + profile.getField(dist + recalcH, i)) / 2)) + str(' ') +
+                      str((profile.getField(dist - recalcH, i) +
+                                       profile.getField(dist + recalcH, i))) + str(' ') +
+                      str((profile.getField(dist - 2 * recalcH, i) +
+                                       profile.getField(dist + 2 * recalcH, i))) + str(' ') +
+                      str((profile.getField(dist - 3 * recalcH, i) +
+                                       profile.getField(dist + 3 * recalcH, i))) + str(' ') +
+                      str((profile.getField(dist - 6 * recalcH, i) +
+                                       profile.getField(dist + 6 * recalcH, i))) + str(' ') +
+                      str((profile.getField(dist - 8 * recalcH, i) +
+                                       profile.getField(dist + 8 * recalcH, i))) + '\n')
+                print(str(profile.profile[i].TField) + str(' ') +
+                      str((profile.getField(dist - recalcH, i))) + str(' ') +
+                          str((profile.getField(dist + recalcH, i))) + str(' ') +
+                      str(profile.getField(dist - recalcH, i)) + str(' ') +
+                           str(profile.getField(dist + recalcH, i)) + str(' ') +
+                      str(profile.getField(dist - 2 * recalcH, i)) + str(' ') +
+                           str(profile.getField(dist + 2 * recalcH, i)) + str(' ') +
+                      str(profile.getField(dist - 3 * recalcH, i)) + str(' ') +
+                           str(profile.getField(dist + 3 * recalcH, i)) + str(' ') +
+                      str((profile.getField(dist - 6 * recalcH, i) +
+                                       profile.getField(dist + 6 * recalcH, i))) + str(' ') +
+                      str((profile.getField(dist - 8 * recalcH, i) +
+                                       profile.getField(dist + 8 * recalcH, i))) + '\n')
+
                 record = Record(profile.profile[i].X, profile.profile[i].Y, fieldT, 0, 0, profile.profile[i].Date,
                                 profile.profile[i].Time, profile.profile[i].lat, profile.profile[i].lon,
                                 profile.profile[i].elev - recalcH, 0, 0, 0)
